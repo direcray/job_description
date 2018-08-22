@@ -3,7 +3,12 @@
 @section('content')
 <div class="container">
    <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
+                @if(\Session::has('success'))
+                        <div class="alert alert-success">
+                            {{\Session::get('success')}}
+                        </div>
+                    @endif
             <div class="card">
                 <div class="card-header">工作說明列表</div>
 
@@ -52,8 +57,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-8 col-md-offset-4">
-                            <a href="{{url('/create/job_description')}}" class="btn btn-success">新增產品</a>
-                            <a href="{{url('/job_descriptions')}}" class="btn btn-default">產品清單</a>
+                            <a href="{{url('/create/job_description')}}" class="btn btn-success">新增工作說明</a>
+                            <a href="{{url('/job_descriptions')}}" class="btn btn-default">工作說明清單</a>
+                            <button class="btn btn-danger" type="submit" onclick="$(this).hide()">消失</button>
                         </div>
                     </div>
 

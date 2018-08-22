@@ -22,5 +22,56 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobDescriptionDetail extends Model
 {
-    //
+    /**
+     * id 	
+     * job_description_id 	
+     * type 別	
+     * category 類	
+     * department 部門	
+     * subject 職銜	
+     * description 說明	
+     * target 目標	
+     * result 達成率	
+     * is_used 是否停用	
+     * note 備註	
+     * created_at 	
+     * updated_at  */
+
+    protected $fillable = ['job_description_id', 'type', 'category', 'department', 'subject', 'description', 'target', 'result', 'is_used', 'note'];
+
+    public function saveJobDescriptionDetail($data)
+    {
+        $this->job_description_id = $data['job_description_id'];
+        $this->type = $data['type'];
+        $this->category = $data['category'];
+        $this->department = $data['department'];
+        $this->subject = $data['subject'];
+        $this->description = $data['description'];
+        $this->target = $data['target'];
+        $this->result = $data['result'];
+        $this->is_used = $data['is_used'];
+        $this->note = $data['note'];
+        $this->save();
+        return 1;
+    }
+
+    public function updateJobDescriptionDetail($data)
+    {
+        $job_description_detail = $this->find($data['id']);
+        $job_description_detail->job_description_id = $data['job_description_id'];
+        $job_description_detail->type = $data['type'];
+        $job_description_detail->category = $data['category'];
+        $job_description_detail->department = $data['department'];
+        $job_description_detail->subject = $data['subject'];
+        $job_description_detail->description = $data['description'];
+        $job_description_detail->target = $data['target'];
+        $job_description_detail->result = $data['result'];
+        $job_description_detail->is_used = $data['is_used'];
+        $job_description_detail->note = $data['note'];
+
+
+        $job_description_detail->save();
+        return 1;
+    }
+
 }

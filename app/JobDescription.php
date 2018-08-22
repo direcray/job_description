@@ -32,7 +32,7 @@ class JobDescription extends Model
         $this->level = $data['level'];
         $this->substitute = $data['substitute'];
         $this->save();
-        return 1;
+        return $this->id;
     }
 
     public function updateJobDescription($data)
